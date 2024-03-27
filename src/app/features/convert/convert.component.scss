@@ -1,0 +1,75 @@
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  .editor {
+    flex: 1;
+    ngs-code-editor {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+  .result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding: 2rem 1rem;
+
+    .options {
+      label {
+        font-size: 14px;
+      }
+      input {
+        border: 1px solid #caced1;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    app-button {
+      width: 100%;
+    }
+  }
+}
+
+//Table Styles
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  text-transform: capitalize;
+  //background-color: #04AA6D;
+  //color: white;
+}

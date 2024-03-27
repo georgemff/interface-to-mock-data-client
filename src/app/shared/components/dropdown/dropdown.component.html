@@ -1,0 +1,5 @@
+<select class="custom-select" (change)="changed($event)">
+  <ng-container *ngFor="let o of options">
+    <option [value]="o.value" [selected]="currentValue === o.value">{{o.key}}</option>
+  </ng-container>
+</select>

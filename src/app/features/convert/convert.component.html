@@ -1,0 +1,38 @@
+<main>
+  <div class="editor">
+    <ngs-code-editor
+      [theme]="theme"
+      [codeModel]="codeModel"
+      [options]="options"
+      (valueChanged)="onCodeChanged($event)"
+    >
+    </ngs-code-editor>
+  </div>
+  <div class="result">
+    <div class="options">
+      <app-dropdown [options]="dropdownOptions"
+                    [currentValue]="numberOfElements"
+                    (valueChange)="dropDownChange($event)"></app-dropdown>
+    </div>
+    <div class="preview">
+      <table>
+        <thead>
+        <tr>
+          <th *ngFor="let head of previewTableHeaders">{{head}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let el of convertedResponse?.slice(0,5)">
+          <td *ngFor="let head of previewTableHeaders">
+            {{el[head]}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-button
+      (onClick)="convert()"
+      text="Convert"></app-button>
+  </div>
+</main>

@@ -1,0 +1,13 @@
+button {
+  width: 100%;
+  border: none;
+  padding: 1rem 2rem;
+  background-color: lightslategrey;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+:host {
+  display: block;
+}
