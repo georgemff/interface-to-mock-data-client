@@ -1,9 +1,12 @@
 import {Component} from "@angular/core";
-import {CodeModel} from "@ngstack/code-editor";
+import {CodeEditorService, CodeModel} from "@ngstack/code-editor";
 import {codeModel, options} from "./editor.config";
 import {ApiService} from "../../api/api.service";
 import {DropdownInterface} from "../../shared/components/dropdown/interfaces";
 import {dropdownData} from "./data";
+import { take } from "rxjs";
+import { CustomTypes } from "./extra-lib";
+import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 
 
 @Component({
@@ -26,9 +29,25 @@ export class ConvertComponent {
   previewTableHeaders: string[] = [];
   previewTableData: any[] = [];
 
+  responseHref: SafeUrl = ""
+
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private codeEditorService: CodeEditorService,
+    private sanitizer: DomSanitizer
   ) {
+    this.codeEditorService.loaded
+      .pipe(take(1))
+      .subscribe(editor => {
+        const customTypes = `enum CustomTypes {
+          FIRST_NAME,
+          LAST_NAME,
+          NICK_NAME,
+          DESCRIPTION,
+          EMAIL
+      }`
+        editor.monaco.languages.typescript.typescriptDefaults.addExtraLib(customTypes, 'customTypes.ts');
+      })
   }
 
 
@@ -50,6 +69,9 @@ export class ConvertComponent {
       .subscribe({
         next: (res) => {
           this.convertedResponse = res;
+          
+          this.responseHref = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(JSON.stringify(res)));
+
           if (this.convertedResponse && this.convertedResponse.length) {
             let firstElement = this.convertedResponse[0];
             this.previewTableHeaders = Object.keys(firstElement);
@@ -70,5 +92,9 @@ export class ConvertComponent {
 
   dropDownChange(value: string) {
     this.numberOfElements = parseInt(value);
+  }
+
+  downloadJson(): void {
+
   }
 }

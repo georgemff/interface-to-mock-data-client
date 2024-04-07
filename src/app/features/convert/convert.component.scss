@@ -20,23 +20,12 @@ main {
     padding: 2rem 1rem;
 
     .options {
-      label {
-        font-size: 14px;
-      }
-      input {
-        border: 1px solid #caced1;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
 
-
-        &:focus {
-          outline: none;
-        }
+      .choose-length {
+        width: 100px;
       }
     }
 
