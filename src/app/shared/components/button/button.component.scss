@@ -1,9 +1,11 @@
+@import "../../../../assets/scss/palette.scss";
+
 button {
   width: 100%;
   border: none;
   padding: 1rem 2rem;
-  background-color: lightslategrey;
-  color: white;
+  background-color: $button-bg;
+  color: $white;
   cursor: pointer;
   border-radius: 2px;
 }

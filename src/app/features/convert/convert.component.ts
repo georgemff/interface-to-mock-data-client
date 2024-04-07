@@ -52,11 +52,12 @@ export class ConvertComponent {
 
 
   onCodeChanged(value: string) {
-    this.codeString = value;
     let mapped = value.split("interface")
       .map(i => i.trim())
       .map(i => i.replace(/\n|\s/g, ""))
       .filter(i => !!i)
+      mapped.shift()
+      console.log(mapped)
 
     this.codeString = mapped.join(" interface ");
   }

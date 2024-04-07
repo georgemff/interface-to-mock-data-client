@@ -1,0 +1,12 @@
+main {
+    height: 100dvh;
+
+    .content {
+        height: calc(100dvh - 35px);
+    }
+
+    footer {
+        padding: .5rem 1rem;
+        text-align: center;
+    }
+}
