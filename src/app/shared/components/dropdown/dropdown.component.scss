@@ -11,14 +11,12 @@
 
 select {
   appearance: none;
-  /*  safari  */
   -webkit-appearance: none;
-  /*  other styles for aesthetics */
   width: 100%;
+  margin-top: 0.4rem;
   font-size: 1.15rem;
-  padding: 0.675em 1em 0.675em 1em;
+  padding: 0.555rem 0.8rem;
   background-color: $text-primary;
-  // border: 1px solid #caced1;
   border-radius: 0.25rem;
   color: #000;
   cursor: pointer;

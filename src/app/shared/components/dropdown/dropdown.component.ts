@@ -10,6 +10,7 @@ import {DropdownInterface} from "./interfaces";
 
 export class DropdownComponent {
 
+  @Input() labelText: string = ""
   @Input() options: DropdownInterface[] = []
   @Input() currentValue: number | string;
 
