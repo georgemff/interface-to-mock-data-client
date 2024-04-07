@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: "https://www.tsmock.xyz/api"
+  API_URL: "https://api.tsmock.xyz"
 };
