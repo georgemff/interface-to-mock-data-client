@@ -71,7 +71,8 @@ export class ConvertComponent {
         next: (res) => {
           this.convertedResponse = res;
           
-          this.responseHref = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(JSON.stringify(res)));
+          this.responseHref = this.sanitizer
+          .bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(JSON.stringify(res, null, 4)));
 
           if (this.convertedResponse && this.convertedResponse.length) {
             let firstElement = this.convertedResponse[0];
@@ -93,9 +94,5 @@ export class ConvertComponent {
 
   dropDownChange(value: string) {
     this.numberOfElements = parseInt(value);
-  }
-
-  downloadJson(): void {
-
   }
 }

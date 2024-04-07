@@ -20,7 +20,7 @@
       </div>
       <div class="download-json">
         <a [href]="responseHref" download="mock.json">
-          <app-button (click)="downloadJson()" [disabled]="!convertedResponse?.length">Download JSON</app-button>
+          <app-button [disabled]="!convertedResponse?.length">Download JSON</app-button>
         </a>
       </div>
     </div>
