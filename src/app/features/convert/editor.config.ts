@@ -8,6 +8,7 @@ export const codeModel: CodeModel = {
 
 export const options = {
   contextmenu: true,
+  automaticLayout: true,
   minimap: {
     enabled: true
   }
