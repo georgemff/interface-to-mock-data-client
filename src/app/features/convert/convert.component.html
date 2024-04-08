@@ -9,38 +9,41 @@
     </ngs-code-editor>
   </div>
   <div class="result">
-    <div class="options">
-      <div class="choose-length">
-        <app-dropdown
-          labelText="Rows"
-          [options]="dropdownOptions"
-          [currentValue]="numberOfElements"
-          (valueChange)="dropDownChange($event)"
-        ></app-dropdown>
+    <h1 class="header">TS Interface Converter</h1>
+    <div class="content">
+      <div class="options">
+        <div class="choose-length">
+          <app-dropdown
+            labelText="Rows"
+            [options]="dropdownOptions"
+            [currentValue]="numberOfElements"
+            (valueChange)="dropDownChange($event)"
+          ></app-dropdown>
+        </div>
+        <div class="download-json">
+          <a [href]="responseHref" download="mock.json">
+            <app-button [disabled]="!convertedResponse?.length">Download JSON</app-button>
+          </a>
+        </div>
       </div>
-      <div class="download-json">
-        <a [href]="responseHref" download="mock.json">
-          <app-button [disabled]="!convertedResponse?.length">Download JSON</app-button>
-        </a>
+      <div class="preview">
+        <table>
+          <thead>
+            <tr>
+              <th *ngFor="let head of previewTableHeaders">{{ head }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let el of convertedResponse?.slice(0, 5)">
+              <td *ngFor="let head of previewTableHeaders">
+                {{ el[head] }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+  
+      <app-button (click)="convert()">Convert</app-button>
     </div>
-    <div class="preview">
-      <table>
-        <thead>
-          <tr>
-            <th *ngFor="let head of previewTableHeaders">{{ head }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let el of convertedResponse?.slice(0, 5)">
-            <td *ngFor="let head of previewTableHeaders">
-              {{ el[head] }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <app-button (click)="convert()">Convert</app-button>
   </div>
 </section>

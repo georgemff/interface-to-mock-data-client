@@ -21,23 +21,33 @@ section {
   .result {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     flex: 1;
     padding: 2rem 1rem;
 
-    .options {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1rem;
-
-      .choose-length {
-        width: 100px;
-      }
+    .header {
+      width: 100%;
+      text-align: center;
     }
 
-    app-button {
-      width: 100%;
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 1rem;
+  
+        .choose-length {
+          width: 100px;
+        }
+      }
+  
+      app-button {
+        width: 100%;
+      }
     }
   }
 }
