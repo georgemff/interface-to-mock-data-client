@@ -5,7 +5,6 @@ import {ApiService} from "../../api/api.service";
 import {DropdownInterface} from "../../shared/components/dropdown/interfaces";
 import {dropdownData} from "./data";
 import { take } from "rxjs";
-import { CustomTypes } from "./extra-lib";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 
 
@@ -52,14 +51,7 @@ export class ConvertComponent {
 
 
   onCodeChanged(value: string) {
-    let mapped = value.split("interface")
-      .map(i => i.trim())
-      .map(i => i.replace(/\n|\s/g, ""))
-      .filter(i => !!i)
-      mapped.shift()
-      console.log(mapped)
-
-    this.codeString = mapped.join(" interface ");
+    this.codeString = value;
   }
 
   convert(): void {
@@ -70,7 +62,7 @@ export class ConvertComponent {
       .subscribe({
         next: (res) => {
           this.convertedResponse = res;
-          
+
           this.responseHref = this.sanitizer
           .bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(JSON.stringify(res, null, 4)));
 
