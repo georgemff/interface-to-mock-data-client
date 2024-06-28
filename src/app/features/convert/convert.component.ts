@@ -1,11 +1,11 @@
 import {Component} from "@angular/core";
 import {CodeEditorService, CodeModel} from "@ngstack/code-editor";
 import {codeModel, options} from "./editor.config";
-import {ApiService} from "../../api/api.service";
 import {DropdownInterface} from "../../shared/components/dropdown/interfaces";
 import {dropdownData} from "./data";
 import { take } from "rxjs";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
+import {ConverterService} from "../../api/convert.service";
 
 
 @Component({
@@ -31,7 +31,7 @@ export class ConvertComponent {
   responseHref: SafeUrl = ""
 
   constructor(
-    private apiService: ApiService,
+    private convertService: ConverterService,
     private codeEditorService: CodeEditorService,
     private sanitizer: DomSanitizer
   ) {
@@ -55,12 +55,13 @@ export class ConvertComponent {
   }
 
   convert(): void {
-    this.apiService.convert({
-      value: this.codeString,
+    this.convertService.convertInterface({
+      interface: this.codeString,
       count: this.numberOfElements
     })
       .subscribe({
-        next: (res) => {
+        next: (res: any) => {
+          console.log(res)
           this.convertedResponse = res;
 
           this.responseHref = this.sanitizer

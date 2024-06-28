@@ -4,11 +4,10 @@ import {CommonModule} from "@angular/common";
 import {CodeEditorModule} from "@ngstack/code-editor";
 import {ButtonModule} from "../../shared/components/button/button.module";
 import {RouterModule} from "@angular/router";
-import {ApiService} from "../../api/api.service";
-import {ConvertService} from "./convert.service";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {DropdownModule} from "../../shared/components/dropdown/dropdown.module";
 import {FormsModule} from "@angular/forms";
+import {ConverterService} from "../../api/convert.service";
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
   ],
   providers: [
-    ApiService,
-    ConvertService
+    ConverterService
   ]
 })
 

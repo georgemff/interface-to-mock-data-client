@@ -19,8 +19,10 @@
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
     "@ngstack/code-editor": "^6.0.0",
+    "lorem-ipsum": "^2.0.8",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "unique-names-generator": "^4.7.1",
     "zone.js": "~0.13.3"
   },
   "devDependencies": {
